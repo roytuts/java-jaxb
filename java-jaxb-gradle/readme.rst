@@ -1,0 +1,1 @@
+You can go through tutorial https://www.roytuts.com/generating-jaxb-classes-from-xsd-using-gradle/

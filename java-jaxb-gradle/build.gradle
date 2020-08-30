@@ -1,0 +1,45 @@
+plugins {
+    id 'java-library'
+}
+
+sourceCompatibility = 12
+targetCompatibility = 12
+
+repositories {
+	mavenCentral()
+}
+
+//sourceSets.main.java.srcDirs "src/generated-sources/jaxb"
+
+configurations {
+    jaxb
+}
+
+dependencies {
+    jaxb (
+		'com.sun.xml.bind:jaxb-xjc:2.3.1',
+		'com.sun.xml.bind:jaxb-impl:2.3.1',
+		'org.glassfish.jaxb:jaxb-runtime:2.3.3'
+    )
+}
+
+task jaxb {
+    System.setProperty('javax.xml.accessExternalSchema', 'all')
+    def jaxbTargetDir = file("src/generated-sources/jaxb")
+    doLast {
+        jaxbTargetDir.mkdirs()
+        ant.taskdef(
+			name: 'xjc',
+			classname: 'com.sun.tools.xjc.XJCTask',
+			classpath: configurations.jaxb.asPath
+        )
+        ant.jaxbTargetDir = jaxbTargetDir
+        ant.xjc(
+			destdir: '${jaxbTargetDir}',
+			package: 'com.roytuts.jaxb',
+			schema: 'src/main/resources/xsd/shiporder.xsd'
+        )
+    }
+}
+
+compileJava.dependsOn jaxb
