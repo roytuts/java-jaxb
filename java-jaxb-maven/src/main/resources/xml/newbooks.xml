@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Catalog>
+    <Book id="1001">
+        <Author>S Roy</Author>
+        <Title>Title for Book One</Title>
+        <Genre>IT</Genre>
+        <Price>450.0</Price>
+        <PublishDate>2020-08-30+05:30</PublishDate>
+        <Description>Description of Book One</Description>
+    </Book>
+    <Book id="1002">
+        <Author>S Roy</Author>
+        <Title>Title for Book Two</Title>
+        <Genre>CS</Genre>
+        <Price>400.0</Price>
+        <PublishDate>2020-08-30+05:30</PublishDate>
+        <Description>Description of Book Two</Description>
+    </Book>
+</Catalog>
